@@ -109,7 +109,8 @@
       var o = document.createElement('option');
       o.value = c.key;
       var underlying = c.puter ? c.puter.split('/').pop().replace(':free', '') : '';
-      o.textContent = c.symbol + ' ' + c.name + ' · ' + (c.tier === 'free' ? 'free' : 'Pro') + (underlying ? ' · ' + underlying : '');
+      var tierLabel = c.tier === 'free' ? 'free' : (c.tier === 'starter' ? 'Starter' : 'Pro');
+      o.textContent = c.symbol + ' ' + c.name + ' · ' + tierLabel + (underlying ? ' · ' + underlying : '');
       o.style.color = '#0b1220';
       sel.appendChild(o);
     }
