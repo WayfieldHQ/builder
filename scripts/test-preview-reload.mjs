@@ -21,7 +21,8 @@ function check(name, cond, detail) {
     else { console.error('FAIL - ' + name + (detail ? ' — ' + detail : '')); failures++; }
 }
 
-const src = fs.readFileSync(new URL('../src/js/ui.js', import.meta.url), 'utf8');
+// Normalize CRLF so the \n\n slice landmarks work on Windows checkouts too.
+const src = fs.readFileSync(new URL('../src/js/ui.js', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 function slice(startMarker, endMarker) {
     const a = src.indexOf(startMarker);
     const b = src.indexOf(endMarker, a);
