@@ -4951,7 +4951,7 @@ async function sendChatMessage(userInput = null, skipAddToHistory = false, opts 
 
 // A fast, cheap model is plenty for short follow-up ideas (and keeps this off
 // the critical path of the main, more capable build model).
-const SUGGESTION_MODEL = 'infron:qwen/qwen3.8-flash:free';
+const SUGGESTION_MODEL = 'infron:qwen/qwen3.8-27b:free';
 
 // Bumped whenever suggestions are cleared or a new generation starts, so an
 // older in-flight generation can detect it has been superseded and bow out.

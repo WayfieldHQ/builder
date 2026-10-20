@@ -22,7 +22,8 @@
       name: 'Sirius',
       symbol: '\u2726',
       tagline: 'Fast Chat',
-      puter: 'infron:qwen/qwen3.8-flash:free',
+      // Verified against https://api.puter.com/puterai/chat/models.
+      puter: 'infron:qwen/qwen3.8-27b:free',
       photons: 200,
       tier: 'free',
     },
@@ -30,7 +31,8 @@
       name: 'Lyra',
       symbol: '\u2645',
       tagline: 'Builder',
-      puter: 'infron:deepseek/deepseek-v4-flash:free',
+      // V4.1 Flash (the old '...v4-flash:free' id is not in Puter's catalog).
+      puter: 'infron:deepseek/deepseek-v4.1-flash:free',
       photons: 200,
       tier: 'free',
     },
@@ -62,7 +64,8 @@
       name: 'Horizon',
       symbol: '\u25d2',
       tagline: 'Reasoning',
-      puter: 'infron:deepseek/deepseek-v4.1-flash:free',
+      // Distinct free fallback for Horizon when Plinthra isn't connected.
+      puter: 'openrouter:thinkingmachines/inkling:free',
       photons: 1200,
       tier: 'pro',
     },
@@ -70,7 +73,9 @@
       name: 'Singularity',
       symbol: '\u25ce',
       tagline: 'Long Memory',
-      puter: 'infron:qwen/qwen3.8-27b:free',
+      // Distinct free fallback; Pro runs on Plinthra's 262k Kimi model when
+      // the bridge is connected.
+      puter: 'openrouter:minimax/minimax-m3.1-flash:free',
       photons: 1200,
       tier: 'pro',
     },
@@ -108,7 +113,7 @@
     return ['sirius', 'lyra', 'polaris', 'andromedaNova', 'andromeda', 'horizon', 'singularity']
       .map(function (k) {
         var c = CELESTIALS[k];
-        return { key: k, name: c.name, symbol: c.symbol, tagline: c.tagline, tier: c.tier, photons: c.photons };
+        return { key: k, name: c.name, symbol: c.symbol, tagline: c.tagline, tier: c.tier, photons: c.photons, puter: c.puter };
       });
   }
 
